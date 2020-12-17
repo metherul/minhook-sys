@@ -2,7 +2,7 @@ use std::path::{ Path };
 use std::process::Command;
 
 fn main() {
-    println!("cargo:rustc-link-search=deps/minhook/Debug/");
+    println!("cargo:rustc-link-search=minhook/cmake/Debug/");
 
     if !Path::new("curl/.git").exists() {
         let _ = Command::new("git")
@@ -11,10 +11,10 @@ fn main() {
     }
 
     let _ = Command::new("cmake")
-        .args(&["-S", "minhook/", "-B", "minook/"])
+        .args(&["-S", "minhook/", "-B", "minhook/cmake/"])
         .status();
 
     let _ = Command::new("cmake")
-        .args(&["--build", "minhook/"])
+        .args(&["--build", "minhook/cmake/"])
         .status();
 }
