@@ -3,6 +3,7 @@ use std::process::Command;
 
 fn main() {
     println!("cargo:rustc-link-search=minhook/cmake/Debug/");
+    println!("cargo:rustc-link-lib=[static]minhook.x64d.lib");
 
     if !Path::new("curl/.git").exists() {
         let _ = Command::new("git")
