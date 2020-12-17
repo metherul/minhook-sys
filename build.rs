@@ -17,5 +17,5 @@ fn main() {
         .status();
 
     println!("cargo:rustc-link-search=minhook/cmake/Debug/");
-    println!("cargo:rustc-link-lib=[static]minhook/cmake/Debug/minhook.x64d");
+    // println!("cargo:rustc-link-lib=[static]minhook/cmake/Debug/minhook.x64d");
 }
