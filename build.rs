@@ -2,9 +2,6 @@ use std::path::{ Path };
 use std::process::Command;
 
 fn main() {
-    println!("cargo:rustc-link-search=minhook/cmake/Debug/");
-    println!("cargo:rustc-link-lib=[static]minhook/cmake/Debug/minhook.x64d");
-
     if !Path::new("curl/.git").exists() {
         let _ = Command::new("git")
             .args(&["submodule", "update", "--init"])
@@ -18,4 +15,7 @@ fn main() {
     let _ = Command::new("cmake")
         .args(&["--build", "minhook/cmake/"])
         .status();
+
+    println!("cargo:rustc-link-search=minhook/cmake/Debug/");
+    println!("cargo:rustc-link-lib=[static]minhook/cmake/Debug/minhook.x64d");
 }
